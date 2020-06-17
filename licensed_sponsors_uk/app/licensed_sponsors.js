@@ -28,10 +28,10 @@ module.exports.query = async event => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        result: res.rows[0].name,
+        result: res.rows,
         name: query.name,
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
+        message: 'Load successfully!',
+        // input: event,
       },
       null,
       2
