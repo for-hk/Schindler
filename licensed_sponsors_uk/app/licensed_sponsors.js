@@ -23,7 +23,12 @@ module.exports.query = async event => {
     console.log(res.rows[0].sub_tier)
   }
   await client.end()
-
+  if (res.rows.length > 0) {
+    console.log(res.rows[0].name)
+    console.log(res.rows[0].city)
+    console.log(res.rows[0].tier_and_rating)
+    console.log(res.rows[0].sub_tier)
+  }
   return {
     statusCode: 200,
     body: JSON.stringify(
