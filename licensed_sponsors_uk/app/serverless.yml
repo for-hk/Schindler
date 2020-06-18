@@ -25,6 +25,15 @@ provider:
   runtime: nodejs12.x
   region: ap-northeast-1
   timeout: 30
+  tracing:
+    lambda: true
+  vpc:
+    securityGroupIds:
+      - sg-c9636abb
+    subnetIds:
+      - subnet-3136f579
+      - subnet-61c7fa3a
+      - subnet-0333f928
 
 # you can overwrite defaults here
 #  stage: dev
