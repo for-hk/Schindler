@@ -15,13 +15,13 @@ module.exports.query = async event => {
 
   await client.connect()
   // const res = await client.query('SELECT $1::text as message', ['Hello world!'])
-  const res = await client.query('SELECT "company-name" as name, city, "tier-and-rating" as tier_and_rating, "sub-tier" as sub_tier, create_at FROM "find-job"."licensed-sponsors" where "company-name" Like $1::text;', ['%' + query.name + '%'])
   if (res.rows.length > 0) {
     console.log(res.rows[0].name)
     console.log(res.rows[0].city)
     console.log(res.rows[0].tier_and_rating)
     console.log(res.rows[0].sub_tier)
   }
+  const res = await client.query('SELECT "company-name" as name, city, "tier-and-rating" as tier_and_rating, "sub-tier" as sub_tier, create_at FROM "find-job"."licensed-sponsors" where "company-name-lowcase" Like $1::text limit 10;', ['%' + query.name.toLowerCase() + '%'])
   await client.end()
   if (res.rows.length > 0) {
     console.log(res.rows[0].name)
